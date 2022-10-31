@@ -15,11 +15,17 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Install') {
             steps {
                 withMaven(maven : 'maven3.6.3') {
-                    sh 'mvn deploy'
+                    sh 'mvn install'
                 }
+            }
+        }
+        stage('Docker Build') {
+            agent any
+            steps {
+              sh 'docker build -t srinis/jgjd-integration:latest .'
             }
         }
     }

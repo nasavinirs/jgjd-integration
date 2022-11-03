@@ -18,7 +18,7 @@ pipeline {
         stage('Install') {
             steps {
                 withMaven(maven : 'maven3.6.3') {
-                    sh 'mvn install'
+                    sh 'mvn package'
                 }
             }
         }
@@ -26,6 +26,12 @@ pipeline {
             agent any
             steps {
               sh 'docker build -t idockertest/jgjd-integration:latest .'
+            }
+        }
+        stage('Docker Push') {
+            agent any
+            steps {
+              sh 'docker push idockertest/jgjd-integration:latest'
             }
         }
     }

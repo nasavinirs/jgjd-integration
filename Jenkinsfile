@@ -23,13 +23,11 @@ pipeline {
             }
         }
         stage('Docker Build') {
-            agent any
             steps {
               sh 'docker build -t idockertest/jgjd-integration:latest .'
             }
         }
         stage('Docker Push') {
-            agent any
             steps {
               sh 'docker push idockertest/jgjd-integration:latest'
             }

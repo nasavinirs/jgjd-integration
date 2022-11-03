@@ -25,7 +25,7 @@ pipeline {
         stage('Docker Build') {
             agent any
             steps {
-              sh 'docker build -t srinis/jgjd-integration:latest .'
+              sh 'docker build -t idockertest/jgjd-integration:latest .'
             }
         }
     }
